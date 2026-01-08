@@ -13,9 +13,6 @@ return new class extends Migration
     {
         Schema::create('estatus', function (Blueprint $table) {
             $table->id();
-            
-            $table->integer('usuario_id');
-            $table->integer('pelicula_id');
 
             //claves foraneas
             $table->foreignId('usuario_id')

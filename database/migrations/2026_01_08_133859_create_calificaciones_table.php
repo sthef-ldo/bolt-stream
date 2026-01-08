@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('calificaciones', function (Blueprint $table) {
             $table->id();
-            $table->integer('usuario_id');
-            $table->integer('pelicula_id');
 
             //claves foraneas (usuario_id->users[id] y pelicula_id->peliculas[id])
             $table->foreignId('usuario_id')

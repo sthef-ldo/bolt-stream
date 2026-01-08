@@ -14,9 +14,6 @@ return new class extends Migration
         Schema::create('peliculas_generos', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('genero_id');
-            $table->integer('pelicula_id');
-
             //claves foraneas (genero_id->generos[id] y pelicula_id->peliculas[id])
             $table->foreignId('pelicula_id')
                 ->constrained('peliculas')
