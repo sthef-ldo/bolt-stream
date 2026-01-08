@@ -21,8 +21,8 @@ return new class extends Migration
             $table->foreignId('pelicula_id')
                 ->constrained('peliculas')
                 ->onDelete('cascade');
-            $table->enum('estatus', ['vista', 'por_ver', 'abandonada','sin_estatus'])->defaultq('sin_estatus');
-            
+                
+            $table->enum('estatus', ['vista', 'por_ver', 'abandonada','sin_estatus'])->default('sin_estatus');
             $table->boolean('favorita')->default(0);// Favorita (0 = no, 1 = sí) 
             $table->timestamps();
         });
