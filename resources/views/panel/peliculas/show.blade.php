@@ -26,6 +26,16 @@
         <a href="{{ $pelicula->link_pelicula }}" target="_blank">Reproducir</a>
     @endif
 
+     <form action="{{ route('peliculas.destroy', $pelicula) }}"
+                              method="POST"
+                              style="display:inline-block;"
+                              onsubmit="return confirm('¿Seguro que quieres eliminar este producto?');">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-sm btn-danger" type="submit">
+                                Borrar
+                            </button>
+
     <p>
         <a href="{{ route('peliculas.index') }}">Volver al listado</a>
     </p>

@@ -29,10 +29,11 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('peliculas.detalles', $pelicula->id) }}">
+                            <a href="{{ route('peliculas.show', $pelicula->id) }}">
                                 Ver detalles
                             </a>
                         </td>
+                   
                     </tr>
                 @endforeach
             </tbody>

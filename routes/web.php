@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Support\Facades\DB;
+
+
+use App\Http\Controllers\PeliculaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,8 +24,6 @@ Route::get('/prueba', function(){
 
 
 
-use App\Http\Controllers\PeliculaController;
+Route::resource('peliculas', PeliculaController::class);
 
-Route::get('/peliculas', [PeliculaController::class, 'index'])->name('peliculas.index');
-Route::get('/peliculas/{id}', [PeliculaController::class, 'detalles'])->name('peliculas.detalles');
 
