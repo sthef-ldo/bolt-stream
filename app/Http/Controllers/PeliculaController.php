@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Pelicula;
 use Illuminate\Http\Request;
 
+
+use App\Models\Estatus;
+use Illuminate\Support\Facades\Auth;
+
 class PeliculaController extends Controller
 {
     // ------------------------------------------
@@ -29,7 +33,18 @@ class PeliculaController extends Controller
         $pelicula = Pelicula::findOrFail($id);
 
         // Retorna la vista de detalle, pasando la película encontrada
-        return view('panel.peliculas.show', compact('pelicula'));
+        $estatusActual = null;
+
+        if (Auth::check()) {
+            $estatusActual = Estatus::where('usuario_id', Auth::id())
+                ->where('pelicula_id', $pelicula->id)
+                ->first();
+        }
+
+        return view('panel.peliculas.show', [
+            'pelicula'      => $pelicula,
+            'estatusActual' => $estatusActual,
+        ]);
     }
 
     // ----------------------------------------

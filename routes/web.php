@@ -14,16 +14,24 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Rutas para las peliculas
+Route::resource('peliculas', PeliculaController::class);
 
-//prueba
-Route::get('/prueba', function(){
+
+use App\Http\Controllers\EstatusController;
+
+Route::middleware('auth')->group(function () {
+    Route::post('/peliculas/{pelicula}/estatus', [EstatusController::class, 'store'])
+        ->name('peliculas.estatus.store');
+});
+
+
+/* Route::get('/prueba', function(){
     $peliculas = DB::table('peliculas')
         ->get();
     return $peliculas;
 });
 
-
-
-Route::resource('peliculas', PeliculaController::class);
+ */
 
 

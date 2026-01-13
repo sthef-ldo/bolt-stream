@@ -45,4 +45,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+
+
+
+    //relaciones
+    public function estatusPeliculas(){
+        return $this->hasMany(Estatus::class, 'usuario_id');
+    }
+    public function calificacionesPeliculas(){
+        return $this->hasMany(Califiacion::class, 'usuario_id');
+    }
 }

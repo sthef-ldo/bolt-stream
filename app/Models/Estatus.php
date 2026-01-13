@@ -6,15 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Estatus extends Model
 {
+    protected $table = 'estatus';
      protected $fillable = [
+        'usuario_id',
+        'pelicula_id',
         'estatus',
-        'favorita',
+        'favorita'
     ];
 
-    public function users(){
-        return $this->belongsTo(User::class);
+    public function user(){
+        return $this->belongsTo(User::class, 'usuario_id');
     }
-    public function peliculas(){
-        return $this->belongsTo(Pelicula::class);
+    public function pelicula(){
+        return $this->belongsTo(Pelicula::class, 'pelicula_id');
     }
 }
