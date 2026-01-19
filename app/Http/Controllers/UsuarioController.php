@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
     public function index()
     {
-        
+        $usuarios=User::all();
+        return view('panel.usuarios.index', compact('usuarios'));
     }
     public function create()
     {
@@ -19,7 +21,8 @@ class UsuarioController extends Controller
     }
     public function show($id)
     {
-        
+        $usuario=User::findOrFail($id);
+        return view('panel.usuarios.show', compact('usuario'));
     }
     public function edit($id){}
     public function update(Request $request, $id)

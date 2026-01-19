@@ -26,4 +26,12 @@ class Pelicula extends Model
     public function calificaciones(){
         return $this->hasMany(Califiacion::class, 'pelicula_id');
     }
+
+
+
+    public function promedioCalificacion()
+    {
+        $promedio = $this->calificaciones()->avg('calificacion');
+        return $promedio ? round($promedio, 2) : 0;
+    }
 }

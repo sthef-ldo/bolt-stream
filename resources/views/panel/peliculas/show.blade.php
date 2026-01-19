@@ -62,6 +62,28 @@
         <p><em>Inicia sesión para guardar tu estatus de esta película.</em></p>
     @endauth
 
+    <hr>
+    
+    @auth
+        <h4>Mi calificacion</h4>
+
+        <form action="{{ route('peliculas.calificacion.store', $pelicula) }}" method="POST">
+            @csrf
+            <label for="calificacion"><strong>Calificacion:</strong></label>
+            <input type="number" name='calificacion' min="0" max="10" step="1">
+
+        <button type="submit" class="btn btn-sm btn-primary" style="margin-left: 10px;">guardar calificacion</button">
+           </form>
+    @else
+     <p><em>Inicia sesión para guardar tu estatus de esta película.</em></p>
+    @endauth
+
+    <hr>
+    <div name="calificacion_general">
+        <h4>Calificacion general</h4>
+        {{ $pelicula->promedioCalificacion() }}
+    </div>
+
     <form action="{{ route('peliculas.destroy', $pelicula) }}" method="POST" style="display:inline-block;"
         onsubmit="return confirm('¿Seguro que quieres eliminar este producto?');">
         @csrf

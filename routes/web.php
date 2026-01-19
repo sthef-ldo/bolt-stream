@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CalificacionController;
+use App\Http\Controllers\EstatusController;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,11 +21,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('peliculas', PeliculaController::class);
 
 
-use App\Http\Controllers\EstatusController;
+
 
 Route::middleware('auth')->group(function () {
     Route::post('/peliculas/{pelicula}/estatus', [EstatusController::class, 'store'])
         ->name('peliculas.estatus.store');
+    Route::post('/peliculas/{pelicula}/calificacion', [CalificacionController::class, 'store'])
+        ->name('peliculas.calificacion.store');
+
+
+    Route::resource('usuarios', UsuarioController::class);
 });
 
 

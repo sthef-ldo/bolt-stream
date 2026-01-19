@@ -11,7 +11,7 @@ class CalificacionController extends Controller
     public function store(Request $request,Pelicula $pelicula)
     {
         $request->validate([
-            'calificacion'   => 'required|integer|min:1|max:5',
+            'calificacion'   => 'required|integer|min:1|max:10',
         ]);
         $usuarioId = Auth::id();
 
@@ -28,4 +28,5 @@ class CalificacionController extends Controller
 
         return back()->with('success', 'Calificacion actualizado correctamente.');
     }
+    
 }
