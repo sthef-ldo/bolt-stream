@@ -10,9 +10,11 @@ use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\PeliculaController;
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
+
+Route::get('/', [PeliculaController::class, 'index'])->name('inicio');
 
 Auth::routes();
 

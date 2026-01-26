@@ -21,7 +21,12 @@ class PeliculaController extends Controller
 
         // Retorna la vista 'index' dentro del panel de películas,
         // enviando las películas mediante la función compact()
-        return view('panel.peliculas.index', compact('peliculas'));
+        return view('panel.peliculas.index', [
+            'peliculas' => Pelicula::paginate(10), // 10 por página
+            'peliculasDestacadas' => Pelicula::latest()->take(5)->get(),
+            'peliculasTendencia' => Pelicula::orderBy('id', 'desc')->take(10)->get(),   //cambiar id por visitas
+            'peliculasEstrenos' => Pelicula::whereYear('anio', now()->year)->take(8)->get()
+        ]);
     }
 
     // ----------------------------------------------------

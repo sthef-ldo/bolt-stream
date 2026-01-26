@@ -83,6 +83,7 @@
                         placeholder="Buscar películas...">
                     <button class="btn btn-warning" type="submit"><i class="fas fa-search"></i></button>
                 </form>
+                {{-- <a href="{{ route('login') }}" class="btn btn-outline-light">Iniciar Sesión</a> --}}
             </div>
 
       
@@ -102,7 +103,7 @@
             </div>
             <div class="carousel-inner">
                 {{-- ZONA CARRUSEL: PELÍCULAS DESTACADAS --}}
-                @if ($peliculas->isEmpty())
+                @if ($peliculasDestacadas->isEmpty())
                     <div class="carousel-item active">
                         <div class="d-block w-100 bg-secondary" style="height: 70vh;">
                             <div class="empty-state">
@@ -115,7 +116,7 @@
                         </div>
                     </div>
                 @else
-                    @foreach ($peliculas as $index => $pelicula)
+                    @foreach ($peliculasDestacadas as $index => $pelicula)
                         <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
                             <img src="{{ $pelicula->portada ?? asset('images/default-poster.jpg') }}"
                                 class="d-block w-100" alt="{{ $pelicula->nombre }}">
@@ -159,7 +160,7 @@
             <div class="container">
                 <h2 class="section-title h3 mb-4">🔥 Tendencia ahora</h2>
                 {{-- ZONA TENDENCIA: PELÍCULAS --}}
-                {{-- @if ($peliculasTendencia->isEmpty())
+                 @if ($peliculasTendencia->isEmpty())
                     <div class="empty-state">
                         <div class="text-center text-muted">
                             <i class="fas fa-fire fa-3x mb-3 opacity-50"></i>
@@ -189,7 +190,7 @@
                             </div>
                         @endforeach
                     </div>
-                @endif --}}
+                @endif
                 <!-- PELÍCULAS DE PRUEBA -->
                 <div class="row g-3">
                     <div class="col-lg-2 col-md-3 col-sm-4 col-6">
@@ -218,7 +219,7 @@
             <div class="container">
                 <h2 class="section-title h3 mb-4">🎬 Estrenos</h2>
                 {{-- ZONA ESTRENOS: PELÍCULAS --}}
-                {{-- @if ($peliculasEstrenos->isEmpty())
+                 @if ($peliculasEstrenos->isEmpty())
                     <div class="empty-state">
                         <div class="text-center text-muted">
                             <i class="fas fa-star fa-3x mb-3 opacity-50"></i>
@@ -245,7 +246,7 @@
                             </div>
                         @endforeach
                     </div>
-                @endif --}}
+                @endif
                 <!-- PELÍCULAS DE PRUEBA -->
                 <div class="row g-3">
                     <div class="col-lg-3 col-md-4 col-sm-6">
